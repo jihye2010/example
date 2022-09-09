@@ -1,1 +1,27 @@
 c(1, 2, 3)
+library(usethis)
+
+## Name, email
+usethis::use_git_config(user.name = "Jihye Heo", user.email = "jihye2010@g.skku.edu")
+
+## setting: permanent storage
+credentials::credential_helper_set("manager")                 # Windows
+credentials::credential_helper_set("osxkeychain")             # Mac
+credentials::credential_helper_set("store")                   # Linux
+
+## create a personal access token for authentication:
+usethis::create_github_token() 
+## in case usethis version < 2.0.0: usethis::browse_github_token() (or even better: update usethis!)
+
+## copy and paste your token and press enter
+credentials::set_github_pat()
+
+# ----------------------------------------------------------------------------
+
+#### 4. Restart R! ###########################################################
+
+# ----------------------------------------------------------------------------
+
+#### 5. Verify settings ######################################################
+
+usethis::git_sitrep()
